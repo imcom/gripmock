@@ -101,6 +101,11 @@ type protocParam struct {
 }
 
 func generateProtoc(param protocParam) {
+	/*
+	// this will cause issues with proto definitions with multiple directory layers
+	// and imports
+	// e.g. proto/myservice/v1/hello.proto and proto/myservice/v1/msg.proto
+	// hello.proto has import "myservice/v1/msg.proto"
 	protodirs := strings.Split(param.protoPath[0], "/")
 	protodir := ""
 	if len(protodirs) > 0 {
@@ -108,6 +113,7 @@ func generateProtoc(param protocParam) {
 	}
 
 	args := []string{"-I", protodir}
+	*/
 	// include well-known-types
 	for _, i := range param.imports {
 		args = append(args, "-I", i)
